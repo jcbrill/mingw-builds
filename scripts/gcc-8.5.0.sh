@@ -62,6 +62,7 @@ PKG_PATCHES=(
 	gcc/gcc-libgomp-ftime64.patch
 	gcc/gcc-8-branch-Backport-patches-for-std-filesystem-from-master.patch
 	gcc/0020-libgomp-Don-t-hard-code-MS-printf-attributes.patch
+	gcc/gcc-makefilein-libiberty-picdir-shared.patch
 )
 
 #
