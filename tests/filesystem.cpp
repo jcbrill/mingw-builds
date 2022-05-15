@@ -35,9 +35,14 @@
 // **************************************************************************
 
 #include <iostream>
-#include <filesystem>
 
-namespace fs = std::filesystem;
+#ifdef USE_EXPERIMENTAL_FILESYSTEM
+    #include <experimental/filesystem> 
+    namespace fs = std::experimental::filesystem;
+#else
+    #include <filesystem>
+    namespace fs = std::filesystem;
+#endif
 
 void demo_status(const fs::file_status s) {
     if(fs::is_regular_file(s)) std::cout << " is a regular file\n";

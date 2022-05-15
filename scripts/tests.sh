@@ -99,9 +99,19 @@ random_device_list=(
 	"random_device.cpp -std=c++11 -o random_device.exe"
 )
 
-filesystem_list=(
-    "filesystem.cpp -std=c++17 -o filesystem.exe"
-)
+if [[ `echo $BUILD_VERSION | cut -d. -f1` -ge 10 ]]; then
+	filesystem_list=(
+		"filesystem.cpp -std=c++17 -o filesystem.exe"
+	)
+elif [[ `echo $BUILD_VERSION | cut -d. -f1` -ge 9 ]]; then
+	filesystem_list=(
+		"filesystem.cpp -DUSE_EXPERIMENTAL_FILESYSTEM -std=c++17 -lstdc++fs -o filesystem.exe"
+	)
+else
+	filesystem_list=(
+		"filesystem.cpp -DUSE_EXPERIMENTAL_FILESYSTEM -std=c++17 -lstdc++fs -o filesystem.exe"
+	)
+fi
 
 # **************************************************************************
 # **************************************************************************
